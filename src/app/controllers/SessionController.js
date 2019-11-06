@@ -14,7 +14,7 @@ class SessionController {
       password: Yup.string().required('Password is required'),
     });
 
-    schema.validate(req.body, { abortEarly: false }).catch(error => {
+    await schema.validate(req.body, { abortEarly: false }).catch(error => {
       [errorMessage] = error.errors;
     });
 
