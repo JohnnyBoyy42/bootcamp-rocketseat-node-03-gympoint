@@ -3,6 +3,17 @@ import * as Yup from 'yup';
 import Plain from '../models/Plain';
 
 class PlainController {
+  async index(req, res) {
+    const { page = 1 } = req.query;
+
+    const plains = await Plain.findAll({
+      limit: 20,
+      offset: (page - 1) * 20,
+      order: ['id'],
+    });
+    return res.json({ plains });
+  }
+
   async store(req, res) {
     let errorMessage = '';
 
