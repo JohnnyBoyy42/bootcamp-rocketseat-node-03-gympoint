@@ -2,6 +2,7 @@ import { Router } from 'express';
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import StudentController from './app/controllers/StudentController';
+import PlainController from './app/controllers/PlainController';
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -15,5 +16,7 @@ routes.put('/users', UserController.update);
 
 routes.post('/students', StudentController.store);
 routes.put('/students/:id', StudentController.update);
+
+routes.use('/plain', PlainController.store);
 
 export default routes;
