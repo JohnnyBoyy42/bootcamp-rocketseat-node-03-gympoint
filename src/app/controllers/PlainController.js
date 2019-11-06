@@ -5,6 +5,7 @@ import Plain from '../models/Plain';
 class PlainController {
   async store(req, res) {
     let errorMessage = '';
+
     const schema = Yup.object().shape({
       title: Yup.string().required('Title is required'),
       duration: Yup.number()
@@ -26,7 +27,22 @@ class PlainController {
       return res.status(400).json({ error: errorMessage });
     }
 
-    return res.json({ message: 'deu certo' });
+    const planExists = await Plain.findOne({
+      where: { title: req.body.title },
+    });
+
+    if (planExists) {
+      return res.status(400).json({ error: 'Plain already exists' });
+    }
+
+    const { id, title, duration, price } = await Plain.create(req.body);
+
+    return res.json({
+      id,
+      title,
+      duration,
+      price,
+    });
   }
 }
 
