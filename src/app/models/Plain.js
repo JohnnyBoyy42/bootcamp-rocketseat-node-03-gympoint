@@ -7,6 +7,7 @@ class Plain extends Model {
         title: Sequelize.STRING,
         duration: Sequelize.INTEGER,
         price: Sequelize.DECIMAL(6, 2),
+        canceled_at: Sequelize.DATE,
       },
       {
         sequelize,

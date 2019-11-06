@@ -11,6 +11,9 @@ class PlainController {
       limit: 20,
       offset: (page - 1) * 20,
       order: ['id'],
+      where: {
+        canceled_at: null,
+      },
     });
     return res.json({ plains });
   }
@@ -40,7 +43,10 @@ class PlainController {
     }
 
     const planExists = await Plain.findOne({
-      where: { title: req.body.title },
+      where: {
+        title: req.body.title,
+        canceled_at: null,
+      },
     });
 
     if (planExists) {
@@ -104,6 +110,22 @@ class PlainController {
       duration,
       price,
     });
+  }
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    const plain = await Plain.findByPk(id);
+
+    if (!plain) {
+      return res.status(400).json({ error: 'Plai does not exist' });
+    }
+
+    plain.canceled_at = new Date();
+
+    await plain.save();
+
+    return res.json({ plain });
   }
 }
 
