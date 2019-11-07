@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { isBefore, addMonths, parseISO, format } from 'date-fns';
+import { isBefore, addMonths, parseISO } from 'date-fns';
 import Registration from '../models/Registration';
 import Plain from '../models/Plain';
 import Student from '../models/Student';
