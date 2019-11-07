@@ -6,7 +6,7 @@ class PlainController {
   async index(req, res) {
     const { page = 1 } = req.query;
 
-    const plains = await Plain.findAll({
+    const plans = await Plain.findAll({
       attributes: ['title', 'duration', 'price'],
       limit: 20,
       offset: (page - 1) * 20,
@@ -15,7 +15,7 @@ class PlainController {
         canceled_at: null,
       },
     });
-    return res.json({ plains });
+    return res.json({ plans });
   }
 
   async store(req, res) {
@@ -50,7 +50,7 @@ class PlainController {
     });
 
     if (planExists) {
-      return res.status(400).json({ error: 'Plain already exists' });
+      return res.status(400).json({ error: 'Plan already exists' });
     }
 
     const { id, title, duration, price } = await Plain.create(req.body);
@@ -86,23 +86,23 @@ class PlainController {
     }
 
     const { title } = req.body;
-    const plain = await Plain.findByPk(id);
+    const plan = await Plain.findByPk(id);
 
-    if (!plain) {
-      return res.status(400).json({ error: 'Plain does not exist' });
+    if (!plan) {
+      return res.status(400).json({ error: 'Plan does not exist' });
     }
 
-    if (title !== plain.title) {
-      const plainExists = await Plain.findOne({
+    if (title !== plan.title) {
+      const planExists = await Plain.findOne({
         where: { title },
       });
 
-      if (plainExists) {
-        return res.status(400).json({ error: "Plain's name already exists" });
+      if (planExists) {
+        return res.status(400).json({ error: "Plan's name already exists" });
       }
     }
 
-    const { duration, price } = await plain.update(req.body);
+    const { duration, price } = await plan.update(req.body);
 
     return res.json({
       id,
@@ -115,17 +115,17 @@ class PlainController {
   async delete(req, res) {
     const { id } = req.params;
 
-    const plain = await Plain.findByPk(id);
+    const plan = await Plain.findByPk(id);
 
-    if (!plain) {
+    if (!plan) {
       return res.status(400).json({ error: 'Plai does not exist' });
     }
 
-    plain.canceled_at = new Date();
+    plan.canceled_at = new Date();
 
-    await plain.save();
+    await plan.save();
 
-    return res.json({ plain });
+    return res.json({ plan });
   }
 }
 
