@@ -7,6 +7,7 @@ class Registration extends Model {
         start_date: Sequelize.DATEONLY,
         end_date: Sequelize.DATEONLY,
         price: Sequelize.DECIMAL(6, 2),
+        canceled_at: Sequelize.DATE,
       },
       {
         sequelize,

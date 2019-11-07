@@ -2,7 +2,8 @@ import { Router } from 'express';
 import UserController from './app/controllers/UserController';
 import SessionController from './app/controllers/SessionController';
 import StudentController from './app/controllers/StudentController';
-import PlainController from './app/controllers/PlainController';
+import PlanController from './app/controllers/PlanController';
+import RegistrationController from './app/controllers/RegistrationController';
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -17,9 +18,12 @@ routes.put('/users', UserController.update);
 routes.post('/students', StudentController.store);
 routes.put('/students/:id', StudentController.update);
 
-routes.get('/plain', PlainController.index);
-routes.post('/plain', PlainController.store);
-routes.put('/plain/:id', PlainController.update);
-routes.delete('/plain/:id', PlainController.delete);
+routes.get('/plain', PlanController.index);
+routes.post('/plain', PlanController.store);
+routes.put('/plain/:id', PlanController.update);
+routes.delete('/plain/:id', PlanController.delete);
+
+routes.get('/registration', RegistrationController.index);
+routes.post('/registration', RegistrationController.store);
 
 export default routes;
