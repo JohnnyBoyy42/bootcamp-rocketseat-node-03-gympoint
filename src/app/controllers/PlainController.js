@@ -6,7 +6,7 @@ class PlainController {
   async index(req, res) {
     const { page = 1 } = req.query;
 
-    const plans = await Plain.findAll({
+    const plans = await Plain.finsdAll({
       attributes: ['title', 'duration', 'price'],
       limit: 20,
       offset: (page - 1) * 20,
