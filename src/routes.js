@@ -7,6 +7,7 @@ import SessionController from './app/controllers/SessionController';
 import StudentController from './app/controllers/StudentController';
 import PlanController from './app/controllers/PlanController';
 import RegistrationController from './app/controllers/RegistrationController';
+import FileController from './app/controllers/FileController';
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -21,6 +22,7 @@ routes.put('/users', UserController.update);
 
 routes.post('/students', StudentController.store);
 routes.put('/students/:id', StudentController.update);
+routes.get('/students', StudentController.index);
 
 routes.get('/plain', PlanController.index);
 routes.post('/plain', PlanController.store);
@@ -30,8 +32,6 @@ routes.delete('/plain/:id', PlanController.delete);
 routes.get('/registration', RegistrationController.index);
 routes.post('/registration', RegistrationController.store);
 
-routes.post('/files', upload.single('file'), (req, res) => {
-  return res.json({ ok: true });
-});
+routes.post('/files', upload.single('file'), FileController.store);
 
 export default routes;
