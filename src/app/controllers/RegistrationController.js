@@ -3,11 +3,31 @@ import { isBefore, addMonths, parseISO } from 'date-fns';
 import Registration from '../models/Registration';
 import Plain from '../models/Plain';
 import Student from '../models/Student';
+import File from '../models/File';
 
 class RegistrationController {
   async index(req, res) {
     const registrations = await Registration.findAll({
       where: { canceled_at: null },
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['id', 'name', 'email', 'avatar_id'],
+          include: [
+            {
+              model: File,
+              as: 'avatar',
+              attributes: ['id', 'path', 'url'],
+            },
+          ],
+        },
+        {
+          model: Plain,
+          as: 'plan',
+          attributes: ['title', 'duration', 'price'],
+        },
+      ],
     });
 
     return res.json({ registrations });
