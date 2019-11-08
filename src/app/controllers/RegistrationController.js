@@ -1,9 +1,12 @@
 import * as Yup from 'yup';
-import { isBefore, addMonths, parseISO } from 'date-fns';
+import { isBefore, addMonths, parseISO, format } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import Registration from '../models/Registration';
 import Plain from '../models/Plain';
 import Student from '../models/Student';
 import File from '../models/File';
+
+import Notification from '../schemas/Notification';
 
 class RegistrationController {
   async index(req, res) {
@@ -95,6 +98,15 @@ class RegistrationController {
     req.body.price = parseFloat(planExists.duration * planExists.price);
 
     const { id, end_date, price } = await Registration.create(req.body);
+
+    const formattedDate = format(date, "'dia' dd 'de' MMMM'", {
+      locale: pt,
+    });
+
+    await Notification.create({
+      content: `Novo(a) aluno(a) realizou a matricula que se inica no ${formattedDate}`,
+      user: req.userId,
+    });
 
     return res.json({
       id,
