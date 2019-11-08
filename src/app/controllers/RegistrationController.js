@@ -16,7 +16,7 @@ class RegistrationController {
         {
           model: Student,
           as: 'student',
-          attributes: ['id', 'name', 'email', 'avatar_id'],
+          attributes: ['id', 'name', 'email'],
           include: [
             {
               model: File,
