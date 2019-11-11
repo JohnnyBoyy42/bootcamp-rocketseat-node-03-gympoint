@@ -8,7 +8,8 @@ import File from '../models/File';
 
 import Notification from '../schemas/Notification';
 
-import Mail from '../../lib/Mail';
+import Queue from '../../lib/Queue';
+import NewRegistrationMail from '../jobs/NewRegistrationMail';
 
 class RegistrationController {
   async index(req, res) {
@@ -95,13 +96,18 @@ class RegistrationController {
       return res.status(400).json({ error: 'Past dates are not allowed' });
     }
 
-    req.body.start_date = date;
-    req.body.end_date = addMonths(date, planExists.duration);
-    req.body.price = parseFloat(planExists.duration * planExists.price).toFixed(
-      2
-    );
+    const registrationMail = req.body;
 
-    const { id, end_date, price } = await Registration.create(req.body);
+    registrationMail.start_date = date;
+    registrationMail.end_date = addMonths(date, planExists.duration);
+    registrationMail.price = parseFloat(
+      planExists.duration * planExists.price
+    ).toFixed(2);
+    registrationMail.name = studentExists.name;
+    registrationMail.email = studentExists.email;
+    registrationMail.title = planExists.title;
+
+    const { id, end_date, price } = await Registration.create(registrationMail);
 
     const formattedDate = format(date, "'dia' dd 'de' MMMM' de 'yyyy'", {
       locale: pt,
@@ -112,20 +118,7 @@ class RegistrationController {
       user: req.userId,
     });
 
-    await Mail.sendMail({
-      to: `${studentExists.name} <${studentExists.email}>`,
-      subject: 'Email de boas vindas',
-      template: 'newRegistration',
-      context: {
-        student: studentExists.name,
-        plan: planExists.title,
-        start_date: formattedDate,
-        end_date: format(req.body.end_date, "'dia' dd 'de' MMMM' de 'yyyy'", {
-          locale: pt,
-        }),
-        price: req.body.price.replace('.', ','),
-      },
-    });
+    await Queue.add(NewRegistrationMail.key, { registrationMail });
 
     return res.json({
       id,
