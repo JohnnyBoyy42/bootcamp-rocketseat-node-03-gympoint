@@ -8,6 +8,8 @@ import File from '../models/File';
 
 import Notification from '../schemas/Notification';
 
+import Mail from '../../lib/Mail';
+
 class RegistrationController {
   async index(req, res) {
     const registrations = await Registration.findAll({
@@ -95,17 +97,34 @@ class RegistrationController {
 
     req.body.start_date = date;
     req.body.end_date = addMonths(date, planExists.duration);
-    req.body.price = parseFloat(planExists.duration * planExists.price);
+    req.body.price = parseFloat(planExists.duration * planExists.price).toFixed(
+      2
+    );
 
     const { id, end_date, price } = await Registration.create(req.body);
 
-    const formattedDate = format(date, "'dia' dd 'de' MMMM'", {
+    const formattedDate = format(date, "'dia' dd 'de' MMMM' de 'yyyy'", {
       locale: pt,
     });
 
     await Notification.create({
       content: `Novo(a) aluno(a) realizou a matricula que se inica no ${formattedDate}`,
       user: req.userId,
+    });
+
+    await Mail.sendMail({
+      to: `${studentExists.name} <${studentExists.email}>`,
+      subject: 'Email de boas vindas',
+      template: 'newRegistration',
+      context: {
+        student: studentExists.name,
+        plan: planExists.title,
+        start_date: formattedDate,
+        end_date: format(req.body.end_date, "'dia' dd 'de' MMMM' de 'yyyy'", {
+          locale: pt,
+        }),
+        price: req.body.price.replace('.', ','),
+      },
     });
 
     return res.json({
