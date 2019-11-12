@@ -204,6 +204,22 @@ class RegistrationController {
     await registration.save();
     return res.json(registration);
   }
+
+  async delete(req, res) {
+    const { id } = req.params;
+
+    const registration = await Registration.findByPk(id);
+
+    if (!registration) {
+      return res.status(400).json({ error: 'Registration does not exist' });
+    }
+
+    registration.canceled_at = new Date();
+
+    await registration.save();
+
+    return res.json({ registration });
+  }
 }
 
 export default new RegistrationController();

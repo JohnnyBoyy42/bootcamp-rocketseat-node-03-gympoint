@@ -33,6 +33,7 @@ routes.delete('/plain/:id', PlanController.delete);
 routes.get('/registration', RegistrationController.index);
 routes.post('/registration', RegistrationController.store);
 routes.put('/registration/:id', RegistrationController.update);
+routes.delete('/registration/:id', RegistrationController.delete);
 
 routes.post('/files', upload.single('file'), FileController.store);
 

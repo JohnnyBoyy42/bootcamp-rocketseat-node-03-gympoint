@@ -118,7 +118,7 @@ class PlainController {
     const plan = await Plain.findByPk(id);
 
     if (!plan) {
-      return res.status(400).json({ error: 'Plai does not exist' });
+      return res.status(400).json({ error: 'Plan does not exist' });
     }
 
     plan.canceled_at = new Date();
