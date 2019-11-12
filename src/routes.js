@@ -9,6 +9,8 @@ import PlanController from './app/controllers/PlanController';
 import RegistrationController from './app/controllers/RegistrationController';
 import FileController from './app/controllers/FileController';
 import NotificationController from './app/controllers/NotificationController';
+import HelpOrderController from './app/controllers/HelpOrderController';
+
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
@@ -16,6 +18,8 @@ const upload = multer(multerConfig);
 
 routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
+
+routes.get('/help-orders', HelpOrderController.index);
 
 routes.use(authMiddleware);
 
