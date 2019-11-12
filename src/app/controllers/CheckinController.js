@@ -98,7 +98,7 @@ class CheckinController {
 
     const newCheckin = await Checkin.create({ student_id: id });
 
-    return res.json({ checkins });
+    return res.json({ newCheckin });
   }
 }
 
