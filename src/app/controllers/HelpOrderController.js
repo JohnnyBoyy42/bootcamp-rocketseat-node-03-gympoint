@@ -3,6 +3,9 @@ import * as Yup from 'yup';
 import HelpOrder from '../models/HelpOrder';
 import Student from '../models/Student';
 
+import Queue from '../../lib/Queue';
+import AnswerHelpOrderMail from '../jobs/AnswerHelpOrderMail';
+
 class HelpOrderController {
   async index(req, res) {
     const orders = await HelpOrder.findAll({
@@ -61,6 +64,42 @@ class HelpOrderController {
     });
 
     return res.json({ orders });
+  }
+
+  async update(req, res) {
+    const { id } = req.params;
+    let errorMessage = '';
+    const schema = Yup.object().shape({
+      answer: Yup.string().required('Answer is required'),
+    });
+
+    await schema.validate(req.body, { abortEarly: false }).catch(error => {
+      [errorMessage] = error.errors;
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: errorMessage });
+    }
+
+    const order = await HelpOrder.findByPk(id, {
+      include: {
+        model: Student,
+        as: 'student',
+        attributes: ['name', 'email'],
+      },
+    });
+
+    if (!order) {
+      return res.status(400).json({ error: 'Help Order does not exist' });
+    }
+
+    req.body.answer_at = new Date();
+
+    await order.update(req.body);
+
+    await Queue.add(AnswerHelpOrderMail.key, { order });
+
+    return res.json({ order });
   }
 }
 
