@@ -7,10 +7,11 @@ import Plain from '../app/models/Plain';
 import Registration from '../app/models/Registration';
 import File from '../app/models/File';
 import HelpOrder from '../app/models/HelpOrder';
+import Checkin from '../app/models/Checkin';
 
 import databaseConfig from '../config/database';
 
-const models = [User, Student, Plain, Registration, File, HelpOrder];
+const models = [User, Student, Plain, Registration, File, HelpOrder, Checkin];
 
 class DataBase {
   constructor() {
