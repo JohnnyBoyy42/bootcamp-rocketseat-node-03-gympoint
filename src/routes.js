@@ -20,6 +20,7 @@ routes.post('/users', UserController.store);
 routes.post('/sessions', SessionController.store);
 
 routes.get('/help-orders', HelpOrderController.index);
+routes.post('/students/:id/help-orders', HelpOrderController.store);
 
 routes.use(authMiddleware);
 
