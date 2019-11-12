@@ -31,7 +31,7 @@ class NewRegistrationMail {
             locale: pt,
           }
         ),
-        price: registrationMail.price.replace('.', ','),
+        price: registrationMail.pricePerMonth.replace('.', ','),
       },
     });
   }
