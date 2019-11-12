@@ -9,6 +9,7 @@ class HelpOrderController {
       where: {
         answer_at: null,
       },
+      attributes: ['id', 'student_id', 'answer', 'answer_at', 'created_at'],
     });
     return res.json({ orders });
   }
@@ -41,6 +42,25 @@ class HelpOrderController {
     );
 
     return res.json({ idBase, student_id, question });
+  }
+
+  async show(req, res) {
+    const { id } = req.params;
+
+    const studentExists = await Student.findByPk(id);
+
+    if (!studentExists) {
+      return res.status(400).json({ error: 'Student does not exist' });
+    }
+
+    const orders = await HelpOrder.findAll({
+      where: {
+        student_id: id,
+      },
+      attributes: ['id', 'student_id', 'answer', 'answer_at', 'created_at'],
+    });
+
+    return res.json({ orders });
   }
 }
 
