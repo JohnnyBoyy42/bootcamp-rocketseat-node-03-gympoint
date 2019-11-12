@@ -1,4 +1,12 @@
-import { isAfter, isBefore, parseISO } from 'date-fns';
+import {
+  isAfter,
+  isBefore,
+  parseISO,
+  subDays,
+  endOfDay,
+  startOfDay,
+} from 'date-fns';
+import { Op } from 'sequelize';
 
 import Student from '../models/Student';
 import Checkin from '../models/Checkin';
@@ -15,8 +23,15 @@ class CheckinController {
 
     const checkins = await Checkin.findAll({
       where: {
-        id,
+        student_id: id,
       },
+      include: [
+        {
+          model: Student,
+          as: 'student',
+          attributes: ['name', 'email'],
+        },
+      ],
     });
 
     return res.json({ checkins });
@@ -42,10 +57,17 @@ class CheckinController {
     }
 
     const todaysDate = new Date(
-      new Date().getFullYear(),
-      new Date().getMonth(),
-      new Date().getDate()
+      // new Date().getFullYear(),
+      // new Date().getMonth(),
+      // new Date().getDate()
+      2019,
+      10,
+      27
     );
+
+    const subDate = subDays(todaysDate, 7);
+
+    console.log(todaysDate, subDate);
 
     if (isBefore(todaysDate, parseISO(registrationExists.start_date))) {
       return res.status(401).json({
@@ -59,7 +81,24 @@ class CheckinController {
       });
     }
 
-    return res.json({ registrationExists });
+    const checkins = await Checkin.findAll({
+      where: {
+        student_id: id,
+        created_at: {
+          [Op.between]: [subDate, endOfDay(todaysDate)],
+        },
+      },
+    });
+
+    if (checkins.length >= 5) {
+      return res.status(401).json({
+        error: "You've reached the maximum capacity of checkins within 7 days",
+      });
+    }
+
+    const newCheckin = await Checkin.create({ student_id: id });
+
+    return res.json({ checkins });
   }
 }
 
