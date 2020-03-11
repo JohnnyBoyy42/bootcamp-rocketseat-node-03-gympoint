@@ -1,11 +1,4 @@
-import {
-  isAfter,
-  isBefore,
-  parseISO,
-  subDays,
-  endOfDay,
-  startOfDay,
-} from 'date-fns';
+import { isAfter, isBefore, parseISO, subDays, endOfDay } from 'date-fns';
 import { Op } from 'sequelize';
 
 import Student from '../models/Student';
