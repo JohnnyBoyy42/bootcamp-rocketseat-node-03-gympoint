@@ -27,7 +27,7 @@ class UserController {
     });
 
     if (userExists) {
-      return res.status(400).json({ error: 'User already exists' });
+      return res.status(401).json({ error: 'User already exists' });
     }
 
     const { id, name, email } = await User.create(req.body);
@@ -62,7 +62,7 @@ class UserController {
     if (!(await schema.isValid(req.body))) {
       return res
         .status(400)
-        .json({ error: errorMessage || 'Password not equal' });
+        .json({ error: errorMessage || 'Passwords are not equal' });
     }
 
     const { email, oldPassword } = req.body;
@@ -73,12 +73,12 @@ class UserController {
       const userExists = User.findOne({ where: { email } });
 
       if (userExists) {
-        return res.status(401).json({ error: 'Usuario ja existe' });
+        return res.status(401).json({ error: 'User already exists' });
       }
     }
 
     if (oldPassword && !(await user.checkPassword(oldPassword))) {
-      return res.status(401).json({ error: 'Senha invalida' });
+      return res.status(401).json({ error: 'Invalid password' });
     }
 
     const { id, name } = await user.update(req.body);

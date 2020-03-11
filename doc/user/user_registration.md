@@ -25,7 +25,8 @@ Cadastra um novo usuário no sistema.
       "type": string
     },
     "password": {
-      "type": string
+      "type": string,
+      "minimum": 6
     }
   }
   ```
@@ -37,16 +38,27 @@ Cadastra um novo usuário no sistema.
     ```json
     {
       "id": 1,
-      "name": "name",
-      "email": "xxxx@xxxx.com",
-      "provider": false
+      "name": "xxxxx",
+      "email": "xxxx@xxxx.com"
     }
     ```
 
 - **Error Response:**
 
   - **Code:** 400 <br />
-    **Description:** `"Usuario ja existente"`
+    **Description:** `"Name is required"`
 
   - **Code:** 400 <br />
-    **Description:** `"erro de validacao"`
+    **Description:** `"Email must be a valid email format"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Email is required"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Minimum value 6"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Password is required"`
+
+  - **Code:** 401 <br />
+    **Description:** `"User already exists"`

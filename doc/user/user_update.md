@@ -19,13 +19,16 @@ Atualiza um usuário existente no sistema.
       "type": string
     },
     "oldPassword": {
-      "type": string
+      "type": string,
+      "minimum": 6
     },
     "password": {
-      "type": string
+      "type": string,
+      "minimum": 6
     },
     "confirmPassword": {
-      "type": string
+      "type": string,
+      "minimum": 6
     },
     "avatar_id": {
       "type": integer
@@ -41,18 +44,29 @@ Atualiza um usuário existente no sistema.
     {
       "id": 1,
       "name": "name",
-      "email": "xxxx@xxxx.com",
-      "provider": false
+      "email": "xxxx@xxxx.com"
     }
     ```
 
 - **Error Response:**
 
   - **Code:** 400 <br />
-    **Description:** `"Usuario ja existente"`
+    **Description:** `"Email must be a valid email format"`
 
   - **Code:** 400 <br />
-    **Description:** `"Erro de validacao"`
+    **Description:** `"Minimum value 6"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Password is required"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Confirm password is required"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Passwords are not equal"`
+
+  - **Code:** 400 <br />
+    **Description:** `"User already exists"`
 
   - **Code:** 401 <br />
-    **Description:** `"Senha nao confirmada"`
+    **Description:** `"Invalid password"`
