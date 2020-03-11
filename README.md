@@ -46,26 +46,3 @@ executar comando **yarn dev**
 ## Files
 
 - [Upload de arquivo](doc/file/file_upload.md) : `POST /files`
-
-## Providers
-
-- [Consulta todos fornecedores de serviço](doc/provider/get_all_providers.md) : `GET /providers`
-
-## Appointments
-
-- [Consulta todos os agendamentos](doc/appointments/get_all_appointments.md) : `GET /appointments`
-- [Cadastra um novo agendamento](doc/appointments/create_appointment.md) : `POST /appointments`
-- [Exclui um agendamento](doc/appointments/delete_appointment.md) : `DELETE /appointments/{id}`
-
-## Schedule
-
-- [Consulta agenda do dia](doc/schedule/get_schedule_of_the_day.md) : `GET /schedule`
-
-## Notification
-
-- [Consulta as notificações de um usuário](doc/notification/get_notification_of_a_provider.md) `GET /notification`
-- [Atualiza notificação para lida](doc/notification/update_notification.md) `PUT /notification/{id}`
-
-## Availability
-
-- [Verifica se um determinado horario está disponível](doc/available/check_availability.md) `GET /providers/{providerId}/available`
