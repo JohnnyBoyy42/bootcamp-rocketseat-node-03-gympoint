@@ -1,6 +1,6 @@
 # Consulta notificações
 
-Consulta todas notificações de um fornecedor de serviço
+Consulta todas notificações do administrador
 
 - **PATH** <br />
   /notification
@@ -25,8 +25,3 @@ Consulta todas notificações de um fornecedor de serviço
       }
     ]
     ```
-
-- **Error Response:**
-
-  - **Code:** 401 <br />
-    **Description:** `"Only providers can see notifications"`

@@ -66,3 +66,8 @@ executar comando **yarn dev**
 - [Cadastrar matricula](doc/registration/create_enrollment.md) : `POST /registration`
 - [Atualizar matricula](doc/registration/update_enrollment.md) : `PUT /registration/{id}`
 - [Excluir matricula](doc/registration/delete_enrollment.md) : `DELETE /registration/{id}`
+
+## Notification
+
+- [Consultar notificações](doc/notification/get_all_notification.md) : `GET /notification`
+- [Atualizar matricula](doc/notification/update_notification.md) : `PUT /notification/{id}`

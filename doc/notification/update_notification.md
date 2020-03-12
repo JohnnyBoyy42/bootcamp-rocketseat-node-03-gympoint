@@ -1,6 +1,6 @@
 # Atualiza uma notificação
 
-Exclui um agendamento com duas horas de antecedência
+Atualiza uma notificação para lida
 
 - **PATH** <br />
   /notification/{id}
