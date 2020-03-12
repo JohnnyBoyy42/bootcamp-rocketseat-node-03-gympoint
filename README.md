@@ -49,13 +49,20 @@ executar comando **yarn dev**
 
 ## Plan
 
-- [Consulta planos disponíveis](doc/plan/get_all_plans.md) : `GET /plan`
+- [Consultar planos disponíveis](doc/plan/get_all_plans.md) : `GET /plan`
 - [Cria novo plano](doc/plan/create_plan.md) : `POST /plan`
-- [Atualiza um plano](doc/plan/update_plan.md) : `PUT /plan`
-- [Exclui um plano](doc/plan/delete_plan.md) : `DELETE /plan`
+- [Atualiza um plano](doc/plan/update_plan.md) : `PUT /plan/{id}`
+- [Exclui um plano](doc/plan/delete_plan.md) : `DELETE /plan/{id}`
 
 ## Student
 
 - [Consultar clientes](doc/student/get_all_student.md) : `GET /student`
 - [Cadastrar cliente](doc/student/create_student.md) : `POST /student`
-- [Alterar cliente](doc/student/update_student.md) : `PUT /student`
+- [Alterar cliente](doc/student/update_student.md) : `PUT /student/{id}`
+
+## Enrollment
+
+- [Consultar matriculas em aberto](doc/plan/get_all_enrollment.md) : `GET /registration`
+- [Cadastrar matricula](doc/plan/create_enrollment.md) : `POST /registration`
+- [Atualizar matricula](doc/plan/update_enrollment.md) : `PUT /registration/{id}`
+- [Excluir matricula](doc/plan/delete_enrollment.md) : `DELETE /registration/{id}`
