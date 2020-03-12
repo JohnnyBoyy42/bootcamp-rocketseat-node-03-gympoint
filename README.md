@@ -71,3 +71,7 @@ executar comando **yarn dev**
 
 - [Consultar notificações](doc/notification/get_all_notification.md) : `GET /notification`
 - [Atualizar matricula](doc/notification/update_notification.md) : `PUT /notification/{id}`
+
+## Help Orders
+
+- [Consulta pedidos de assistência](doc/helporders/get_all_help_orders.md) : `GET /help-orders`
