@@ -1,9 +1,9 @@
-# Atualiza um plano
+# Atualiza uma matricula
 
-Atualiza um plano ofertado pela academia.
+Atualiza a matricula de um cliente.
 
 - **PATH** <br />
-  /plan/{id}
+  /registration/{id}
 
 - **Method** <br />
   `PUT`
@@ -28,18 +28,13 @@ Atualiza um plano ofertado pela academia.
 
   ```json
   {
-    "title": {
-      "type": string
-    },
-    "duration": {
+    "student_id": {
       "type": integer
     },
-    "price": {
-      "type": number,
-      "multipleOf" 0.01
+    "plan_id": {
+      "type": integer
     }
   }
-
   ```
 
 - **Success Response**
@@ -49,31 +44,39 @@ Atualiza um plano ofertado pela academia.
     ```json
     {
       "id": 1,
-      "title": "xxxx",
-      "duration": 3,
-      "price": "xxx.xx"
+      "start_date": "xxxx-xx-xx",
+      "end_date": "xxxx-xx-xx",
+      "price": "xxx.xx",
+      "canceled_at": null,
+      "createdAt": "xxxx-xx-xxTxx:xx:xx.xxxZ",
+      "updatedAt": "xxxx-xx-xxTxx:xx:xx.xxxZ",
+      "student_id": 1,
+      "plan_id": 1
     }
     ```
 
 - **Error Response:**
 
   - **Code:** 400 <br />
-    **Description:** `"Duration must be a number"`
+    **Description:** `"Student ID must be a number"`
 
   - **Code:** 400 <br />
-    **Description:** `"Duration must be positive"`
+    **Description:** `"Student ID must be positive"`
 
   - **Code:** 400 <br />
-    **Description:** `"Duration must be an integer"`
+    **Description:** `"Student ID must be an integer"`
 
   - **Code:** 400 <br />
-    **Description:** `"Price must be a number"`
+    **Description:** `"Plan ID must be a number"`
 
   - **Code:** 400 <br />
-    **Description:** `"Price must be positive"`
+    **Description:** `"Plan ID must be positive"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Plan ID must be an integer"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Registration does not exist"`
 
   - **Code:** 400 <br />
     **Description:** `"Plan does not exist"`
-
-  - **Code:** 400 <br />
-    **Description:** `"Plan's name already exists"`
