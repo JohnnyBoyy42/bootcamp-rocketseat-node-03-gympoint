@@ -1,9 +1,9 @@
-# Exclui um plano
+# Exclui uma matricula
 
-Exclui um plano ofertado pela academia.
+Exclui a matricula de um cliente.
 
 - **PATH** <br />
-  /plan/{id}
+  /registration/{id}
 
 - **Method** <br />
   `DELETE`
@@ -28,19 +28,19 @@ Exclui um plano ofertado pela academia.
     **Description**:
     ```json
     {
-      "plan": {
-        "id": 1,
-        "title": "xxxxx",
-        "duration": 1,
-        "price": "xxx.xxx",
-        "canceled_at": "xxxx-xx-xxTxx:xx:xx.xxxZ",
-        "createdAt": "xxxx-xx-xxTxx:xx:xx.xxxZ",
-        "updatedAt": "xxxx-xx-xxTxx:xx:xx.xxxZ"
-      }
+      "id": 1,
+      "start_date": "xxxx-xx-xx",
+      "end_date": "xxxx-xx-xx",
+      "price": "xxx.xx",
+      "canceled_at": null,
+      "createdAt": "xxxx-xx-xxTxx:xx:xx.xxxZ",
+      "updatedAt": "xxxx-xx-xxTxx:xx:xx.xxxZ",
+      "student_id": 1,
+      "plan_id": 1
     }
     ```
 
 - **Error Response:**
 
   - **Code:** 400 <br />
-    **Description:** `"Plan does not exist"`
+    **Description:** `"Registration does not exist"`
