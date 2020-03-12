@@ -50,3 +50,4 @@ executar comando **yarn dev**
 ## Plans
 
 - [Consulta planos disponíveis](doc/plan/get_all_plans.md) : `GET /plan`
+- [Cria novo plano](doc/plan/create_plan.md) : `POST /plan`
