@@ -8,7 +8,7 @@ Retorna todos os planos ofertados pela academia.
 - **Method** <br />
   `GET`
 
-- **Query Params**
+- **Query Params** <br />
   &emsp;**Required** <br />
   &emsp;&ndash; page <br />
 

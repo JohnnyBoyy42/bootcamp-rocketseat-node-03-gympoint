@@ -47,9 +47,13 @@ executar comando **yarn dev**
 
 - [Upload de arquivo](doc/file/file_upload.md) : `POST /files`
 
-## Plans
+## Plan
 
 - [Consulta planos disponíveis](doc/plan/get_all_plans.md) : `GET /plan`
 - [Cria novo plano](doc/plan/create_plan.md) : `POST /plan`
 - [Atualiza um plano](doc/plan/update_plan.md) : `PUT /plan`
 - [Exclui um plano](doc/plan/delete_plan.md) : `DELETE /plan`
+
+## Student
+
+- [Consultar clientes](doc/student/get_all_student) : `GET /student`

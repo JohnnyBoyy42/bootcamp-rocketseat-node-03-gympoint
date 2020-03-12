@@ -27,10 +27,10 @@ class StudentController {
       weight && typeof height === 'string' ? weight.replace(',', '.') : weight;
 
     const schema = Yup.object().shape({
-      name: Yup.string().required('name is required'),
+      name: Yup.string().required('Name is required'),
       email: Yup.string()
-        .email('email must be a valid email format')
-        .required('name is required'),
+        .email('Email must be a valid email format')
+        .required('Name is required'),
       age: Yup.number()
         .typeError('Age must be a number')
         .positive('Age must be positive')
@@ -57,7 +57,7 @@ class StudentController {
     });
 
     if (studentExists) {
-      return res.status(401).json({ error: 'student already exists' });
+      return res.status(401).json({ error: 'Student already exists' });
     }
 
     const { id, name, email, age } = await Student.create(req.body);
