@@ -1,9 +1,9 @@
-# Atualiza um plano
+# Atualiza um cliente
 
-Atualiza um plano ofertado pela academia.
+Atualiza um cliente cadastrado na academia.
 
 - **PATH** <br />
-  /plan/{id}
+  /student/{id}
 
 - **Method** <br />
   `PUT`
@@ -28,18 +28,25 @@ Atualiza um plano ofertado pela academia.
 
   ```json
   {
-    "title": {
+    "name": {
       "type": string
     },
-    "duration": {
+    "email": {
+      "type": string
+    },
+    "age": {
       "type": integer
     },
-    "price": {
-      "type": number,
-      "multipleOf" 0.01
+    "height": {
+      "type": string
+    },
+    "weight": {
+      "type": string
+    },
+    "avatar_id": {
+      "type": integer
     }
   }
-
   ```
 
 - **Success Response**
@@ -49,31 +56,34 @@ Atualiza um plano ofertado pela academia.
     ```json
     {
       "id": 1,
-      "title": "xxxx",
-      "duration": 3,
-      "price": "xxx.xx"
+      "name": "xxxxx",
+      "height": "x.xx",
+      "weight": "xx"
     }
     ```
 
 - **Error Response:**
 
   - **Code:** 400 <br />
-    **Description:** `"Duration must be a number"`
+    **Description:** `"Email must be a valid email format"`
 
   - **Code:** 400 <br />
-    **Description:** `"Duration must be positive"`
+    **Description:** `"Name is required"`
 
   - **Code:** 400 <br />
-    **Description:** `"Duration must be an integer"`
+    **Description:** `"Age must be a number"`
 
   - **Code:** 400 <br />
-    **Description:** `"Price must be a number"`
+    **Description:** `"Age must be positive"`
 
   - **Code:** 400 <br />
-    **Description:** `"Price must be positive"`
+    **Description:** `"Age must be an integer"`
 
   - **Code:** 400 <br />
-    **Description:** `"Plan does not exist"`
+    **Description:** `"Height must be positive"`
 
   - **Code:** 400 <br />
-    **Description:** `"Plan's name already exists"`
+    **Description:** `"Weight must be positive"`
+
+  - **Code:** 401 <br />
+    **Description:** `"Student already exists"`

@@ -1,9 +1,9 @@
-# Cadastra um novo plano
+# Cadastra um novo cliente
 
-Cadastra um novo plano de venda para academia.
+Cadastra um novo cliente na academia.
 
 - **PATH** <br />
-  /plan
+  /student
 
 - **Method** <br />
   `POST`
