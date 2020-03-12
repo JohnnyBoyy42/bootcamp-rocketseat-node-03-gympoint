@@ -62,7 +62,7 @@ executar comando **yarn dev**
 
 ## Enrollment
 
-- [Consultar matriculas em aberto](doc/plan/get_all_enrollment.md) : `GET /registration`
-- [Cadastrar matricula](doc/plan/create_enrollment.md) : `POST /registration`
-- [Atualizar matricula](doc/plan/update_enrollment.md) : `PUT /registration/{id}`
-- [Excluir matricula](doc/plan/delete_enrollment.md) : `DELETE /registration/{id}`
+- [Consultar matriculas em aberto](doc/registration/get_all_enrollment.md) : `GET /registration`
+- [Cadastrar matricula](doc/registration/create_enrollment.md) : `POST /registration`
+- [Atualizar matricula](doc/registration/update_enrollment.md) : `PUT /registration/{id}`
+- [Excluir matricula](doc/registration/delete_enrollment.md) : `DELETE /registration/{id}`
