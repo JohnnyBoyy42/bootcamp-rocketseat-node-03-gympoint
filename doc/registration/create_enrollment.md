@@ -1,32 +1,31 @@
-# Cadastra um novo plano
+# Cadastra uma nova matricula
 
-Cadastra um novo plano de venda para academia.
+Cadastra uma nova matricula de um aluno.
 
 - **PATH** <br />
-  /plan
+  /registration
 
 - **Method** <br />
   `POST`
 
 - **Body Params** <br />
   &emsp;**Required** <br />
-  &emsp;&ndash; title <br />
-  &emsp;&ndash; duration <br />
-  &emsp;&ndash; price
+  &emsp;&ndash; student_id <br />
+  &emsp;&ndash; plan_id <br />
+  &emsp;&ndash; start_date
 
   &emsp;**Properties**
 
   ```json
   {
-    "title": {
-      "type": string
-    },
-    "duration": {
+    "student_id": {
       "type": integer
     },
-    "price": {
-      "type": number,
-      "multipleOf" 0.01
+    "plan_id": {
+      "type": integer
+    },
+    "start_date": {
+      "type": string
     }
   }
   ```
@@ -38,8 +37,8 @@ Cadastra um novo plano de venda para academia.
     ```json
     {
       "id": 1,
-      "title": "xxxx",
-      "duration": 1,
+      "start_date": "xxxx-xx-xxTxx:xx:xx-xx:xx",
+      "end_date": "xxxx-xx-xx",
       "price": "xxx.xx"
     }
     ```
@@ -47,28 +46,40 @@ Cadastra um novo plano de venda para academia.
 - **Error Response:**
 
   - **Code:** 400 <br />
-    **Description:** `"Title is required"`
+    **Description:** `"Student ID must be a number"`
 
   - **Code:** 400 <br />
-    **Description:** `"Duration must be a number"`
+    **Description:** `"Student ID must be positive"`
 
   - **Code:** 400 <br />
-    **Description:** `"Duration must be positive"`
+    **Description:** `"Student ID must be an integer"`
 
   - **Code:** 400 <br />
-    **Description:** `"Duration must be an integer"`
+    **Description:** `"Student ID is required"`
 
   - **Code:** 400 <br />
-    **Description:** `"Duration is required"`
+    **Description:** `"Plan ID must be a number"`
 
   - **Code:** 400 <br />
-    **Description:** `"Price must be a number"`
+    **Description:** `"Plan ID must be positive"`
 
   - **Code:** 400 <br />
-    **Description:** `"Price must be positive"`
+    **Description:** `"Plan ID must be an integer"`
 
   - **Code:** 400 <br />
-    **Description:** `"Price is required"`
+    **Description:** `"Plan ID is required"`
 
   - **Code:** 400 <br />
-    **Description:** `"Plan already exists"`
+    **Description:** `"Starting date is required"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Student does not exist"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Plan does not exist"`
+
+  - **Code:** 401 <br />
+    **Description:** `"This student has a registration already"`
+
+  - **Code:** 400 <br />
+    **Description:** `"Past dates are not allowed"`

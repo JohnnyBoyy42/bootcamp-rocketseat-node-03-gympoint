@@ -10,9 +10,11 @@ Cadastra um novo cliente na academia.
 
 - **Body Params** <br />
   &emsp;**Required** <br />
-  &emsp;&ndash; title <br />
-  &emsp;&ndash; duration <br />
-  &emsp;&ndash; price
+  &emsp;&ndash; name <br />
+  &emsp;&ndash; email <br />
+  &emsp;&ndash; age <br />
+  &emsp;&ndash; height <br />
+  &emsp;&ndash; weight
 
   &emsp;**Properties**
 
