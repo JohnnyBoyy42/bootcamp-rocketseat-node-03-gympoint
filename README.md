@@ -46,3 +46,7 @@ executar comando **yarn dev**
 ## Files
 
 - [Upload de arquivo](doc/file/file_upload.md) : `POST /files`
+
+## Plans
+
+- [Consulta planos disponíveis](doc/plan/get_all_plans.md) : `GET /plan`

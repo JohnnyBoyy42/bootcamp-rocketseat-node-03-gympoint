@@ -36,10 +36,10 @@ routes.post('/students', StudentController.store);
 routes.put('/students/:id', StudentController.update);
 routes.get('/students', StudentController.index);
 
-routes.get('/plain', PlanController.index);
-routes.post('/plain', PlanController.store);
-routes.put('/plain/:id', PlanController.update);
-routes.delete('/plain/:id', PlanController.delete);
+routes.get('/plan', PlanController.index);
+routes.post('/plan', PlanController.store);
+routes.put('/plan/:id', PlanController.update);
+routes.delete('/plan/:id', PlanController.delete);
 
 routes.get('/registration', RegistrationController.index);
 routes.post('/registration', RegistrationController.store);
