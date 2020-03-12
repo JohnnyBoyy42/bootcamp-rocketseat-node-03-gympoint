@@ -57,3 +57,5 @@ executar comando **yarn dev**
 ## Student
 
 - [Consultar clientes](doc/student/get_all_student) : `GET /student`
+- [Cadastrar cliente](doc/student/create_student) : `POST /student`
+- [Alterar cliente](doc/student/update_student) : `PUT /student`
