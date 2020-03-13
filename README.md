@@ -81,4 +81,5 @@ executar comando **yarn dev**
 
 ## Check-in
 
-- [Consulta check-in de um aluno](doc/checkin/get_all_checkin_of_a_student) : `GET /students/{id}/checkins`
+- [Consulta check-in de um aluno](doc/checkin/get_all_checkin_of_a_student.md) : `GET /students/{id}/checkins`
+- [Realizar check-in de um aluno](doc/checkin/create_checkin.md) : `POST /students/{id}/checkins`
