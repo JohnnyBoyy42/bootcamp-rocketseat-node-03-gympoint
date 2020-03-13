@@ -1,6 +1,6 @@
 # Consultar check-in de aluno
 
-Retorn todos os check-ins feitos por um aluno.
+Retorna todos os check-ins feitos por um aluno.
 
 - **PATH** <br />
   /students/{id}/checkins
