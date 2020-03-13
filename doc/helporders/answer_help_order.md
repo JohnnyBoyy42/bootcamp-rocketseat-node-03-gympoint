@@ -1,6 +1,6 @@
-# Responder solicitação
+# Responder solicitação de assistência
 
-Responde uma solicitação feita por um aluno
+Responde solicitação de assistência feita por um aluno
 
 - **PATH** <br />
   /help-orders/{id}/answer

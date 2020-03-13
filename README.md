@@ -78,3 +78,7 @@ executar comando **yarn dev**
 - [Cria uma nova solicitação](doc/helporders/create-help-order.md) : `POST /students/{id}/help-orders`
 - [Consulta pedidos de assistência de um aluno](doc/helporders/get_orders_of_a_student.md) : `GET /students/{id}/help-orders`
 - [Responder solicitação de assistência](doc/helporders/answer_help_order) : `POST /help-orders/{id}/answer`
+
+## Check-in
+
+- [Consulta check-in de um aluno](doc/checkin/get_all_checkin_of_a_student) : `GET /students/{id}/checkins`
